@@ -156,3 +156,7 @@ function createList(location){
 }
 
 createList(firstAndPike);
+createList(seaTac);
+createList(seattleCenter);
+createList(capHill);
+createList(alki);

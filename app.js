@@ -1,137 +1,42 @@
 var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
 
-var firstAndPike = {
-  name: '1st and Pike',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieSale: 6.3,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
+function Store(name, minCust, maxCust, avgCookieSale){
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+}
+
+Store.prototype.custPerHour = function(){
+  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
+  console.log(customers);
+  return customers;
 };
 
-
-var seaTac = {
-  name: 'SeaTac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
+Store.prototype.salesByHour = function() {
+  var hourlySales = [];
+  for(var i = 0; i <15; i++){
+    var sales = this.custPerHour() * this.avgCookieSale;
+    hourlySales.push(Math.ceil(sales));
+  }
+  var totalSales = 0;
+  for(var j = 0; j<15; j++){
+    totalSales = hourlySales[j] + totalSales;
+  }
+  hourlySales.push(totalSales);
+  console.log(hourlySales);
+  return hourlySales;
 };
 
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
+var seaTac = new Store('SeaTac Airport', 3, 24,1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 2.7);
+var capHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 3, 16, 4.6);
 
-var seattleCenter = {
-  name: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 2.7,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
-var capHill = {
-  name: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgCookieSale: 2.3,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
-var alki = {
-  name: 'Alki',
-  minCust: 2,
-  maxCust: 16,
-  avgCookieSale: 4.6,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
+function createTable(location){
+  
+}
 
 function createList(location){
   var container = document.createElement('div');

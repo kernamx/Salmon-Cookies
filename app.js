@@ -1,5 +1,14 @@
 'use strict';
 
+var thead = document.getElementById('thead');
+var headValues = ['', '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '1:00 PM', '2:00 PM', '3:00 PM','4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', 'daily location totals'];
+
+for (var j = 0; j < headValues.length; j++) {
+  new_row = document.createElement('td');
+  new_row.innerHTML = headValues[j];
+  thead.appendChild(new_row);
+}
+
 function Store(name, minCust, maxCust, avgCookieSale){
   this.name = name;
   this.minCust = minCust;
@@ -41,6 +50,8 @@ for (var z = 0; z < locations.length; z++){ //calls the sales by hour method on 
   // console.log('hourlySales by location');
   // console.log(locations[z].hourlySales);
 }
+
+
 
 var table = document.getElementById('shell');
 var data = [];

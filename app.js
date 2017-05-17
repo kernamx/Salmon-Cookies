@@ -1,7 +1,5 @@
 'use strict';
 
-// var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
-
 function Store(name, minCust, maxCust, avgCookieSale){
   this.name = name;
   this.minCust = minCust;
@@ -47,29 +45,15 @@ for (var z = 0; z < locations.length; z++){ //calls the sales by hour method on 
 var table = document.getElementById('shell');
 var data = [];
 
-for (var k = 0; k < locations.length; k++){
-  data.push(
-    '<td>' + locations[k].name + '</td>' +
-    '<td>' + locations[k].hourlySales[0] + '</td>' +
-    '<td>' + locations[k].hourlySales[1] + '</td>' +
-    '<td>' + locations[k].hourlySales[2] + '</td>' +
-    '<td>' + locations[k].hourlySales[3] + '</td>' +
-    '<td>' + locations[k].hourlySales[4] + '</td>' +
-    '<td>' + locations[k].hourlySales[5] + '</td>' +
-    '<td>' + locations[k].hourlySales[6] + '</td>' +
-    '<td>' + locations[k].hourlySales[7] + '</td>' +
-    '<td>' + locations[k].hourlySales[8] + '</td>' +
-    '<td>' + locations[k].hourlySales[9] + '</td>' +
-    '<td>' + locations[k].hourlySales[10] + '</td>' +
-    '<td>' + locations[k].hourlySales[11] + '</td>' +
-    '<td>' + locations[k].hourlySales[12] + '</td>' +
-    '<td>' + locations[k].hourlySales[13] + '</td>' +
-    '<td>' + locations[k].hourlySales[14] + '</td>'
-  );
+for (var k = 0; k < locations.length; k++){  //<-- for loop that itterates over the locations to add to the data array, but with <td>'s
+  var dataList = '<td>' + locations[k].name + '</td>';
+  for (var y = 0; y < 15; y++){ //<-- for loop that itterates over the hourly array to add to the data array, but with <td>'s
+    dataList = dataList +'<td>' + locations[k].hourlySales[y] + '</td>';
+  }
+  data.push(dataList);
 }
 
 var grandTotal = [];
-
 for (var m = 0; m<15; m++) {
   grandTotal.push(
   locations[0].hourlySales[m]+
@@ -80,26 +64,14 @@ for (var m = 0; m<15; m++) {
   );
 }
 
-console.log(grandTotal);
+// console.log(grandTotal);
 
-data.push(
-  '<td>' + 'totals' + '</td>' +
-  '<td>' + grandTotal[0] + '</td>' +
-  '<td>' + grandTotal[1] + '</td>' +
-  '<td>' + grandTotal[2] + '</td>' +
-  '<td>' + grandTotal[3] + '</td>' +
-  '<td>' + grandTotal[4] + '</td>' +
-  '<td>' + grandTotal[5] + '</td>' +
-  '<td>' + grandTotal[6] + '</td>' +
-  '<td>' + grandTotal[7] + '</td>' +
-  '<td>' + grandTotal[8] + '</td>' +
-  '<td>' + grandTotal[9] + '</td>' +
-  '<td>' + grandTotal[10] + '</td>' +
-  '<td>' + grandTotal[11] + '</td>' +
-  '<td>' + grandTotal[12] + '</td>' +
-  '<td>' + grandTotal[13] + '</td>' +
-  '<td>' + grandTotal[14] + '</td>'
-);
+var grandDataList = '<td>' + 'totals' + '</td>';  //<-- for loop that itterates over the grandTotal array to add to the data array, but with <td>'s
+for (var x = 0; x < 15; x++){
+  grandDataList = grandDataList +'<td>' + grandTotal[x] + '</td>';
+}
+
+data.push(grandDataList);
 
 var new_row;
 

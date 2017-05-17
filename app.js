@@ -86,8 +86,6 @@ for (var x = 0; x < 15; x++){
 
 data.push(grandDataList);
 
-var new_row;
-
 for (var j = 0; j < data.length; j++) {
   new_row = document.createElement('tr');
   new_row.innerHTML = data[j];

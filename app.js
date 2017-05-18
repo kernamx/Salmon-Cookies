@@ -88,12 +88,3 @@ for (var m = 0; m<15; m++) {
 }
 
 console.log(grandTotal);
-
-// // console.log(grandTotal);
-//
-// var grandDataList = '<td>' + 'totals' + '</td>';  //<-- for loop that itterates over the grandTotal array to add to the data array, but with <td>'s
-// for (var x = 0; x < 15; x++){
-//   grandDataList = grandDataList +'<td>' + grandTotal[x] + '</td>';
-// }
-//
-// data.push(grandDataList);

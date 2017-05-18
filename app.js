@@ -70,7 +70,7 @@ function makeStore(event){
   var addStore = new Store(name, minCust, maxCust, avgCookieSale);
   addStore.salesByHour();
   addStore.render();
-  locations.push(addStore);
+  locations.push(addStore); //experiment for the grand total
   console.log(locations);
   form.reset();
 }

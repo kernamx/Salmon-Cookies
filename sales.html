@@ -5,7 +5,58 @@
     <title>Sales Page</title>
   </head>
   <body class="sales">
+    <form id="store-form">
+      <fieldset>
+        <label for="name">Store Name</label>
+        <input type="text" name="name" placeholder="enter the new store name" required>
+      </fieldset>
 
-        <script class="sales" src="app.js"></script>
+      <fieldset>
+        <label for="minCust">Minimum Cust per Hour</label>
+        <input type="text" name="minCust" placeholder="minimum customers per hour" required>
+      </fieldset>
+
+      <fieldset>
+        <label for="maxCust">Maximum Cust per Hour</label>
+        <input type="text" name="maxCust" placeholder="maximum customers per hour" required>
+      </fieldset>
+
+      <fieldset>
+        <label for="avgCookieSale">Average Cookie Sales per customer</label>
+        <input type="text" name="avgCookieSale" placeholder="Average Cookie Sales" required>
+      </fieldset>
+
+      <button id="submit-btn" type="submit">Add Store!</button>
+    </form>
+
+
+    <section>
+      <table>
+        <thead id="thead">
+          <td>Store Name</td>
+          <td>6:00 AM</td>
+          <td>7:00 AM</td>
+          <td>8:00 AM</td>
+          <td>9:00 AM</td>
+          <td>10:00 AM</td>
+          <td>11:00 AM</td>
+          <td>12:00 PM</td>
+          <td>1:00 PM</td>
+          <td>2:00 PM</td>
+          <td>3:00 PM</td>
+          <td>4:00 PM</td>
+          <td>5:00 PM</td>
+          <td>6:00 PM</td>
+          <td>7:00 PM</td>
+          <td>Daily Location Totals</td>
+
+
+        </thead>
+        <tbody id="table">
+
+        </tbody>
+      </table>
+    </section>
+    <script src="app.js"></script>
   </body>
 </html>

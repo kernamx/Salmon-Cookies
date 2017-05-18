@@ -1,162 +1,99 @@
-var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
-
-var firstAndPike = {
-  name: '1st and Pike',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieSale: 6.3,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
+//Ideas and help by Edwin DelRio. God among men.
 
 
-var seaTac = {
-  name: 'SeaTac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
+'use strict';
 
+var form = document.getElementById('store-form');
+var table = document.getElementById('table');
 
-var seattleCenter = {
-  name: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 2.7,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
-var capHill = {
-  name: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgCookieSale: 2.3,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
-var alki = {
-  name: 'Alki',
-  minCust: 2,
-  maxCust: 16,
-  avgCookieSale: 4.6,
-  custPerHour: function (){
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function(){ //an array with 15 values in it corresponding to hours in the day, last value is total sales of the day
-    var hourlySales = [];
-    for(var i = 0; i <15; i++){
-      var sales = this.custPerHour() * this.avgCookieSale;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0;
-    for(var j = 0; j<15; j++){
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales);
-    console.log(hourlySales);
-    return hourlySales;
-  },
-};
-
-
-function createList(location){
-  var container = document.createElement('div');
-  container.innerHTML = '<h2>' + location.name + '</h2>';
-  document.body.appendChild(container);
-
-  var pairsList = [];
-
-  for(var k = 0; k < 16; k++){
-    pairsList.push(timesOfDay[k] + location.salesByHour()[k] + ' cookies');
-  }
-
-  var list = document.createElement('ul');
-  var listArr = [];
-
-  for (var m =0; m < 16; m++) {
-    listArr.push('<li>' + pairsList[m] + '</li>');
-  }
-  var full_list = listArr.join('');
-  list.innerHTML = full_list;
-  document.body.appendChild(list);
+function Store(name, minCust, maxCust, avgCookieSale){
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+  this.hourlySales = ['<td>' + name + '</td>'];
+  this.cleanSales = []; //thinking about using this for daily totals
 }
 
-createList(firstAndPike);
-createList(seaTac);
-createList(seattleCenter);
-createList(capHill);
-createList(alki);
+Store.prototype.custPerHour = function(){
+  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+  // console.log(customers);
+  return customers;
+};
+
+
+//pushes the 13 hours in the day, plus a daily total, to Hourly Sales, with the TD tags
+Store.prototype.salesByHour = function() {
+  var total = 0;
+  for(var i = 0; i <14; i++){
+    var sales = this.custPerHour() * this.avgCookieSale;
+    this.hourlySales.push('<td>' + Math.ceil(sales) + '</td>');
+    this.cleanSales.push(Math.ceil(sales));
+    total += Math.ceil(sales);
+  }
+  this.hourlySales.push('<td>' + total + '</td>');
+  this.cleanSales.push(total);
+};
+
+// renders the store on the page, joins my big array together into a string.
+Store.prototype.render = function(){
+  var row = document.createElement('tr');
+  row.innerHTML = this.hourlySales.join('');
+  table.appendChild(row);
+};
+
+// existing stores, not needed to add
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
+var seaTac = new Store('SeaTac Airport', 3, 24,1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 2.7);
+var capHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 3, 16, 4.6);
+
+var locations = [firstAndPike, seaTac, seattleCenter, capHill, alki]; //thinking about using this for a daily total line
+
+//makes the salesByHour function run so it generates an hourlySales total
+function getSalesRender(){
+  for (var k = 0; k < 5; k++){
+    locations[k].salesByHour();
+    locations[k].render();
+  }
+}
+getSalesRender();
+
+//this is the store making function, all of our form fields pushing to an object
+function makeStore(event){
+  event.preventDefault();
+  var name = event.target.name.value;
+  var minCust = parseInt(event.target.minCust.value);
+  var maxCust = parseInt(event.target.maxCust.value);
+  var avgCookieSale = parseInt(event.target.avgCookieSale.value);
+  var addStore = new Store(name, minCust, maxCust, avgCookieSale);
+  addStore.salesByHour();
+  addStore.render();
+  locations.push(addStore);
+  console.log(locations);
+  form.reset();
+}
+
+form.addEventListener('submit', makeStore);
+
+//oooooooooo experiements, trying to figure out how to create a grand total list at the bottom of my table.
+var grandTotal = [];
+for (var m = 0; m<15; m++) {
+  var hourTotal;
+  for (var j = 1; j < location.length; j++){
+    hourTotal += locations[j].hourlySales[m];
+  }
+  grandTotal.push(hourTotal);
+}
+
+console.log(grandTotal);
+
+// // console.log(grandTotal);
+//
+// var grandDataList = '<td>' + 'totals' + '</td>';  //<-- for loop that itterates over the grandTotal array to add to the data array, but with <td>'s
+// for (var x = 0; x < 15; x++){
+//   grandDataList = grandDataList +'<td>' + grandTotal[x] + '</td>';
+// }
+//
+// data.push(grandDataList);
